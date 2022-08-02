@@ -1,0 +1,641 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage[acronym]{glossaries}
+\usepackage{tabto}
+\usepackage{placeins}
+\usepackage[font=small, labelfont=bf]{caption}
+
+\title{Intrusion Detection System: Survey}
+\author{Krina patel}
+\date{October 2021}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+            {-2.5ex\@plus -1ex \@minus -.25ex}%
+            {1.25ex \@plus .25ex}%
+            {\normalfont\normalsize\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4}
+
+\begin{document}
+     \includepdf[pages={1-2}]{pcertificate.pdf}
+
+\onehalfspacing
+\pagenumbering{roman}
+% \includepdf[pagecommand={\thispagestyle{plain}},pages=5-6]{file2 (1).pdf}
+    \begin{center}
+        \huge{\section*{Abstract}\label{Abstract}}
+    \end{center}
+    
+    {\fontsize{12}{1}
+        \textit{ Several organizations in today's world keep their data in a variety of methods. The only necessity for these organizations is to protect their private and official data from attackers, both external and internal. It is also feasible that an authorized user will leak the organization's data for any reason. Because duplicate IP and assault packets might occur in real-time, identifying the attacker can be difficult. Intrusion detection technology is a new type of security technology that monitors systems to detect and prevent harmful activity. An intrusion detection system is a piece of software or hardware that automates the detection of intrusions. Information sources, analysis, and response are the three functional components of intrusion detection systems. When intrusions are identified, the system gathers event data from one or more information sources, performs a pre-configured analysis of the data, and then creates predetermined responses, ranging from reports to active intervention. The paper consists the survey of intrusion detection system where we discuss about the main techniques, need of IDSs, how to select IDS for your system and how to manage its output. It serves to familiarize newcomers with the realm of IDSs and computer assaults by giving actionable knowledge and recommendations on the issues.
+
+
+        \\
+        }
+    }
+    \\
+    \\
+     \textbf{ \textit{Keywords: Organizations - Protect - Private - Attackers - Intrusion detection - Security technology - Authorized - Intrusion detection systems - Techniques - Survey  } }
+   
+    \clearpage
+    
+    \tableofcontents
+    \cleardoublepage
+    
+    \addcontentsline{toc}{section}{\listfigurename}\listoffigures
+    
+       
+    \addcontentsline{toc}{section}{List of Acronyms}
+   
+    \begin{center}
+    \huge{\section*{List of Acronyms}\label{sec:intro}}
+    \end{center}
+    \textbf{IDS}\hspace{1cm} \tabto{35mm} Intrusion Detection System
+    \\
+    \textbf{IDES}\hspace{1cm} \tabto{35mm} Intrusion Detection Expert System 
+    \\
+    \textbf{ADP}\hspace{1cm} \tabto{35mm} Automatic Data Processing
+    \\
+    
+   
+    \clearpage
+    
+    \pagenumbering{arabic}
+    
+    \begin{center}
+        \huge{\section{Introduction}\label{sec:intro}}
+    \end{center}
+    
+    The term \textit{privacy} refers to an individual or group’s control over their selective anonymity and how safe they feel about the storage and sharing of information. The right to be let alone, or the freedom from disturbance or intrusion, is known as privacy. In information security, privacy is the right to have some control over how personal information is collected and used. As we all know, with speed-of-light technological innovations have finally come of age. More than before, we see that the Internet is changing computing every day. Today, the possibilities and opportunities are limitless; unfortunately, the risks and chances of \textit{malicious intrusions} are too. As more data is collected and transmitted, information privacy is growing more complicated by the minute. Moreover, that leaves any organization facing an incredibly complex risk matrix for ensuring that personal information is protected. 
+    \\
+    \par In today’s situation, it is crucial that the security mechanisms of a system are designed to prevent unauthorized access to system resources and data. However, the complete protection of over-data at present is unrealistic. Nevertheless, we can detect these intrusion attempts so that action may be taken to repair the damage later. This area of research is called \textbf{Intrusion Detection.}
+    \\
+    \par \textbf{Definition:} \textit{Intrusion detection systems (IDSs) are software or hardware systems that automate the process of monitoring and analyzing events that occur in a computer system or network for signals of security issues.}
+    \\
+    \par By the 1960s, financial systems had begun to incorporate auditing into their operations in to review data and check for fraud or system flaws. However, numerous problems have arisen, such as what should be detected, how to analyze what has been discovered, and how to safeguard different levels of security clearance on the same network without jeopardizing security. Dorothy Denning and Peter Neumann created the first model of IDS, the Intrusion Detection Expert System, between 1984 and 1986. (IDES). The IDES model is based on the assumption that an intruder's behavior pattern is distinct enough from that of a legal user to be discovered via usage statistics analysis. As a result, this model seeks to develop a pattern of behavior for users in relation to programmers, files, and devices, both in the short and long term, to detect violations, in addition to feeding the system based on known violations. Many other systems were developed by the end of the 1980s, based on a method that combined statistical and expert systems. The IDS is a concept that refers to a technique that can identify or detect the presence of intrusive activity. 
+    \clearpage
+    \\
+    \par Anderson, while introducing the concept of intrusion detection (1980), defined an intrusion detection or a threat to be the potential possibility of a deliberate unauthorized attempt \textbf{\textit{to access the information, manipulate the information or render a system unreliable/unusable.}}
+    \\
+    \subsection{Privacy and its protection goals}
+    \par Data privacy is a set of guidelines for how sensitive and essential data should be acquired and handled. All sensitive information that firms hold, including customers, shareholders, and workers, is subject to data privacy concerns. This data is frequently crucial to corporate operations, development, and finances. Data privacy ensures that sensitive information is only available to those who have been given permission to see it. It helps firms comply with regulatory standards by preventing criminals from using data for nefarious purposes.Data protection laws ensure that personal information is kept private. Noncompliance can result in monetary penalties as well as the loss of brand authority.
+    \\
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics{fig 2.png}
+        \caption{Protection goals for privacy}
+    \end{figure}
+    \\
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.20]{cia.png}
+        \caption{CIA Triad}
+    \end{figure}
+    
+    \subsection{Organization of Report}
+    \par In this paper, \textbf{Chapter 1} presents a brief introduction of privacy and IDS history, protection goals for privacy. \textbf{Chapter 2} presents what is intrusion detection, why intrusion detection systems are needed, Intruders and its type. \textbf{Chapter 3} discuss the main intrusion detection techniques, how to select and configure intrusion detection systems for their specific system, their strengths and limitations and how to manage the output of intrusion detection systems. \textbf{Chapter 4} ends with present research in the field, possible future directions of research and summary.
+    \\
+    \clearpage
+    
+    \begin{center}
+        \huge{\section{Overview of Intrusion Detection Systems}\label{sec:intro}}
+    \end{center}
+    
+    \subsection{What is Intrusion Detection?} 
+    \par Intrusion detection is the act of monitoring and analyzing events in a computer system or ADP system or network for indicators of intrusions, which are defined as efforts to undermine the integrity, confidentiality, or availability of a computer or network's security systems. Intrusions are caused by attackers using the internet to get access to the systems, authorized users attempting to gain extra rights for which they are not authorized, and approved users abusing the privileges that have been granted to them. Intrusion Detection Systems (IDSs) are software or hardware systems that automate the process of monitoring and analysis.
+    \\
+    
+    \subsection{Why do we use Intrusion Detection Systems?}
+    \par Confidentiality, integrity, and assurance against denial of service should be provided by a computer system. However, as connectivity (particularly on the internet) grows, so does the huge array of money opportunities that are becoming available. As a result, more and more systems are becoming vulnerable to invaders.
+    \\
+    
+    \par Organizations can use intrusion detection to defend their systems from the hazards that come with increased network connectivity and reliance on information systems. The decision for security professionals should not be whether to utilize intrusion detection, but which intrusion detection features and capabilities to use, given the extent and nature of modern network security threats.
+    \\
+    
+    \par IDSs have become widely accepted as an essential component of any organization's security infrastructure. Despite the demonstrated benefits of intrusion detection systems to system security, many businesses still have to justify the purchase of IDSs. There are a number of compelling reasons to buy and use IDSs:
+    \\
+    
+    \begin{enumerate}
+    \item Increase the perceived danger of discovery and punishment for individuals who would assault or otherwise exploit the system to avoid harmful behaviors.
+    \item To detect assaults and other security breaches that previous security measures have failed to prevent.
+    \item Precursors to assaults (often known as network probing and other "doorknob rattling" activities) must be detected and dealt with.
+    \item To keep track of an organization's current threats.
+    \item To provide quality assurance for security design and administration, particularly in large and complex organizations.
+    \item To offer important information on actual intrusions, enabling for better diagnosis, recovery, and correction of causal variables.
+    \end{enumerate}
+    \\
+    
+    \begin{enumerate}
+        \item[I.] \textbf{Increasing the perceived danger of detection and punishment of offenders to prevent problems.}
+        \par One of the main goals of computer security management is to influence individual user behavior in a way that protects information systems from security threats. Intrusion detection systems assist enterprises in achieving this goal by increasing the perceived risk of attacker identification and punishment. This acts as a solid deterrent to anyone who breaks security policies.
+        \\
+        \item[II.] \textbf{Detecting problems that previous security measures haven't been able to avoid.}
+        \par Attackers can acquire unauthorized access to many, if not all, systems, especially those connected to public networks, by employing well disclosed tactics. This frequently occurs when known system vulnerabilities are not addressed. Despite the fact that suppliers and administrators are encouraged to resolve vulnerabilities in order to prevent attacks, there are a number of instances in which this is not possible:
+        \begin{itemize}
+            \item The operating systems of many legacy systems cannot be patched or updated.
+            \item Even in systems where patches may be implemented, administrators may not have enough time or resources to seek down and install all of the required updates. This is a prevalent issue, particularly in systems with a high number of hosts or a variety of hardware and software environments
+            \item Users may have strong operational needs for network services and protocols that are known to be vulnerable to attack.
+            \item When it comes to configuring and using systems, both users and administrators make mistakes.
+            \item Discrepancies nearly always exist when implementing system access control measures to reflect an organization's procedural computer use policy. Due to these discrepancies, genuine users are able to take activities that are ill-advised or go beyond their authority.
+        \end{itemize}
+        
+        
+        \par Commercial software providers would reduce vulnerabilities in their products in an ideal world, and user organizations would rapidly and reliably fix all identified flaws. In the real world, however, because to our reliance on commercial software, where new weaknesses and vulnerabilities are revealed on a daily basis, this rarely occurs. In this situation, intrusion detection can be a great way to defend a system. An intrusion detection system (IDS) can detect when an attacker has gained access to a system by exploiting an unpatched or unfixable fault.
+        \\
+        
+        \par It can also play an essential role in system security by alerting administrators to the fact that the system has been attacked, allowing them to contain and restore any harm that occurs. This is significantly superior to just ignore network security issues, which allows attackers to continue to get access to computers and the data they contain.
+        \\
+        
+        \item[III.] \textbf{Detecting the preambles to attacks (typically manifested as network probes and other vulnerability checks)}
+        \par When attackers attack a system, they usually do it in steps that are predictable. Probing or investigating a system or network in search of an optimal point of entry is usually the initial stage of an attack. In systems without an IDS, the attacker has complete freedom to explore the system without fear of detection or retaliation. Given this unrestricted access, a determined attacker will ultimately discover and exploit a vulnerability in such a network to get access to multiple systems. An attacker facing the same network with an IDS monitoring its operations has a far more severe struggle. Although the attacker may probe the network for flaws, the IDS will notice the probes, flag them as suspicious, block the attacker's access to the target system, and notify security staff, who can then take appropriate steps to prevent the attacker from gaining access again. Even the appearance of a response to an attacker probing the network will raise the level of danger the attacker perceives, preventing additional attempts to target the network.
+        \\
+        
+        \item[IV.] \textbf{Keeping track of the current threat}
+        \par It often helps to corroborate assertions that the network is going to be attacked or is even now under attack when you're putting together a budget for network security. Furthermore, knowing the frequency and nature of attacks allows you to determine which security measures are necessary to defend the network against them. IDSs verify, enumerate, and classify threats from both inside and outside your organization's network, allowing you to make informed decisions about how to allocate computer security resources. Many people make the mistake of denying that anyone (external or internal) would be interested in hacking into their networks, so using IDSs in this way is critical. Furthermore, the information provided by IDSs about the source and nature of attacks helps you to make security strategy decisions based on demonstrated need rather than speculation or folklore.
+        \\
+        
+        \item[V.] \textbf{Controlling the quality of security design and administration}
+        \par Patterns of system usage and recognized faults can emerge when IDSs have been running for a while. These can be used to identify faults in the system's security design and administration, allowing security management to rectify those problems before they produce an incident.
+        \\
+        
+        \item[VI.] \textbf{Providing information on actual intrusions that is useful.}
+        \par Even if IDSs are unable to prevent attacks, they can nevertheless collect important, thorough, and reliable information about the attack to aid incident response and recovery. Furthermore, under certain circumstances, this information may be used to facilitate and support criminal or civil legal remedies. In the end, this information can help identify trouble areas in the security setup or policy of an organization.
+        \\
+        
+        \item[VII.] \textbf{Definitions from the pioneering work in intrusion detection.}
+        \begin{itemize}
+            \item \textbf{Risk: } Unintentional or unpredictable information disclosure, or a breach of operations integrity due to hardware failure or insufficient or wrong software design.
+            \item\textbf{Vulnerability: }A known or suspected fault in a system's hardware, software, or operation that allows it to be penetrated or its data to be accidentally disclosed.
+            \item \textbf{Attack: }The creation or execution of a precise plan to carry out a threat.
+            \item \textbf{Penetration: }The capacity to get unauthorized (undetected) access to data and programs, as well as the control state of a computer system, through a successful attack.
+        \end{itemize}
+
+ 
+        
+    \end{enumerate}
+    \cleardoublepage
+    
+    \subsection{Intruders and its Types.}
+    \par Attackers who seek to break a network's security are known as intruders. They try to get illegal access to the network by attacking it.
+    \\
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics{fig1.png}
+        \caption{Types of Intruders classified by Anderson}
+    \end{figure}
+    
+    \begin{itemize}
+        \item \textbf{Anderson identified three classes of intruders:}
+        \begin{enumerate}
+        \item \textbf{Masquerader: }A person who is not permitted to use a computer and who breaks into a system's access controls in order to take advantage of a genuine user's account.
+        \item \textbf{Misfeasor: }A valid user who gains access to data, programs, or resources for which he or she has not been granted permission, or who has been granted permission but is abusing his or her rights.
+        \item \textbf{Clandestine user: }An individual who seizes supervisory control of a system and utilizes it to circumvent auditing and access controls or suppress audit collection.
+        \end{enumerate}
+    \end{itemize}
+    \par Masqueraders is most likely to be an external intruder, the misfeasor is an internal intruder and the clandestine user can be either an external or internal intruder.
+    \clearpage
+    \\
+    
+    \begin{center}
+        \huge{\section{Main techniques and survey}\label{sec:intro}}
+    \end{center}
+    
+    \subsection{Major types of IDSs}
+    \par There are various distinct types of IDSs accessible today, each with its monitoring and analytic methods. Each method has its own set of benefits and drawbacks. In addition, all methodologies can be characterized using a generic IDS process model.
+     
+    
+    \subsubsection{Intrusion Detection Process Model}
+    \par Many IDSs can be broken down into three basic functional components:
+    \begin{itemize}
+        \item\textbf{\textit{Information Sources - }}the various event data sources utilized to establish whether or not an incursion occurred. These data can come from various places within the systems, and the most common are network, host, and application monitoring.
+        \item \textbf{\textit{Analysis - }}The part of intrusion detection systems that organizes and makes sense of the events generated from the information sources, determining when such events indicate that intrusions are occurring or have already occurred. Misuse detection and anomaly detection are the two most typical types of analysis.
+        \item \textbf{\textit{Responce - }}When the system detects intrusions, it performs a series of actions. Active measures entail some automated intervention on the side of the system. In contrast, passive measures entail relaying IDS findings to people, who are then expected to take action based on those reports.
+    \end{itemize}
+
+    \subsubsection{How to distinguish between different Intrusion Detection approaches?}
+    \par Intrusion Detection employs a variety of design approaches. These are what drive specific IDSs features and what determines the systems detection capability. These methodologies can assist people evaluating different IDS candidates for a particular system environment in deciding which goals are best addressed by each IDS.
+    \\
+    
+    \subsubsection{Architecture}
+    \par The architecture of an IDS refers to how the IDSs functional components are organized in relation to one another. The host, which executes the IDS software, and the target, which the IDS monitors for problems, are the two key architectural components.
+    \\
+    
+    \begin{itemize}
+     \item \textbf{Host-Target Co-location}
+    \par Most IDSs used to run on the systems they were supposed to protect. This was because most systems were mainframe systems, and the cost of computers made a separate IDS system an expensive indulgence. From a security standpoint, this was an issue because any attacker who successfully hacked the target system could simply disable the IDS as part of the attack.
+    \\
+    
+    \item \textbf{Host-Target Separation}
+    \par With the introduction of workstations and personal computers, most IDS architects separated the IDS control and analytic systems from the IDS host and target systems, resulting in the separation of the IDS host and target systems. This increased the IDSs security by making it considerably easier to conceal the IDSs existence from attackers.
+    \\
+    \end{itemize}
+    
+    \subsubsection{Goals}
+    \par Although there are various goals linked with security mechanisms, intrusion detection systems typically have two overriding goals. 
+    \\
+    
+    \begin{enumerate}
+        \item \textbf{Accountability: }Accountability refers to the capacity to trace a particular behavior or incident back to the person who initiated it. This is critical if you want to file a criminal complaint against an assailant. "I can deal with security attacks that occur on my systems as long as I know who did it (and where to find them.”) is the objective statement connected with accountability. In TCP/IP networks, where the protocols allow attackers to spoof the identity of source addresses or other source identifiers, responsibility is challenging. In any system with poor identity and authentication systems, enforcing accountability is likewise incredibly challenging.
+        
+        \item \textbf{Response: }The ability to detect a certain activity or event as an attack and then take action to block or otherwise alter its ultimate purpose is known as a response. "I don't care who assaults my system as long as I can notice it and stop it," says the aim statement for reaction. It's worth noting that the standards for detection differ significantly from those for response and accountability.
+ 
+    \end{enumerate}
+    \clearpage
+    \subsubsection{Control Strategy}
+   \par Control Strategy defines, how an IDSs elements are controlled, as well as how the IDSs input and output are managed.
+    \\
+    \begin{figure}[h]
+        \centering
+        \includegraphics{fig 3.png}
+        \caption{Types of Control Strategy}
+    \end{figure}
+    
+    \subsubsection{Timing}
+    \par The elapsed time between the events being watched and their analysis is referred to as timing.
+    
+    
+    \begin{enumerate}
+        \item \textbf{Interval-Based (Batch Mode)}
+        \par The information flow from monitoring points to analysis engines is not continuous in interval-based IDSs. In effect, the data is managed similarly to "store and forward" communication systems. Because they relied on operating system audit trails, which were generated as files, many early host-based IDSs employed this timing method. Active responses are not allowed for interval-based IDSs.
+        \clearpage
+        \item \textbf{Real-Time (Continuous)}
+        \par Continuous information streams from information sources are used by real-time IDSs. This is the most common timing scheme used by network-based IDSs that collect data from network traffic streams. We use the word "real-time" in this text because it is used in process control scenarios. This indicates that detection by a "real-time" IDS produces results rapidly enough for the IDS to take action that influences the detected attack's progress.
+    \end{enumerate}
+    
+    \subsubsection{Information Sources}
+    \par The most prevalent method of categorizing IDSs is by the information source. Some IDSs look for attackers by analyzing network packets recorded from network backbones or LAN segments. Other IDSs look for evidence of intrusion in information sources generated by the operating system or application software.
+    \\
+    
+    \begin{enumerate}
+        \item \textbf{Network-Based IDSs}
+        \par Network-based intrusion detection systems make up the majority of commercial intrusion detection systems. By capturing and analyzing network packets, these IDSs identify assaults. One network-based IDS can listen on a network segment or switch and monitor network traffic affecting several hosts connected to the network segment, thereby protecting those hosts. Network-based IDSs are often made up of a collection of single-purpose sensors or hosts positioned throughout a network. These devices keep track of network traffic, analyze it locally, and report assaults to a central management console. The sensors can be more readily guarded against attack because they are only used to run the IDS. Many of these sensors are designed to operate in “stealth” mode to make detecting their presence and position more difficult for an attacker.
+        
+        \begin{itemize}
+            \item \textbf{Advantage}
+            \begin{itemize}
+                \item[*] A vast network can be monitored with a few strategically located network-based IDSs.
+                \item[*] The installation of network-based IDSs has minimal impact on an existing network. 
+                \item[*] Network-based intrusion detection systems (IDSs) can be made exceedingly safe against attack and even invisible to many attackers.
+                \item[*] IDSs that are network-based are usually passive devices that listen on a network wire without interfering with the network's normal operation. As a result, adding network-based IDSs to an existing network is usually simple and straightforward.
+            \end{itemize}
+        \item \textbf{Disadvantage}
+        \begin{itemize}
+            \item[*] In a big or active network, network-based IDSs may have trouble processing all packets and, as a result, may miss an attack launched during periods of high traffic. Some vendors are aiming to tackle this problem by totally implementing IDSs in hardware, which is significantly faster. Due to the necessity to analyze packets fast, suppliers are forced to detect fewer threats while simultaneously using as little computational resources as possible, which might compromise detection efficacy.
+            \item[*] Many of the benefits of network-based IDSs aren't applicable to today's switch-based networks. Switches divide networks into small segments (typically one fast Ethernet wire per host) and provide dedicated connections between hosts served by the same switch. Because most switches lack universal monitoring ports, a network-based IDS sensor's monitoring range is limited to a single host. Even when switches provide monitoring ports, the single port cannot always mirror all traffic passing through the switch.
+            \item[*] IDSs that are network-based are unable to decrypt data. As more enterprises (and attackers) employ virtual private networks, this problem is becoming more serious.
+            \item[*] Most network-based IDSs can't detect if an attack was successful or not; they can only tell if one was launched. This means that whenever a network-based IDS detects an attack, managers must manually investigate each attacked computer to see if it has been compromised.
+            \item[*] Some network-based intrusion detection systems (IDSs) have trouble coping with network-based attacks that fragment packets. The IDSs become unstable and crash as a result of the faulty packets.
+        \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Host-Based IDSs}
+        \par Host-based IDSs work using data obtained from within a single computer system. (It's important to note that application-based IDSs are a subset of host-based IDSs.) This vantage position enables host-based IDSs to evaluate activities with high accuracy and precision, pinpointing which processes and users are participating in a specific operating system assault. Furthermore, unlike network-based IDSs, host-based IDSs may directly access and monitor the data files and system activities that are typically targeted by assaults, allowing them to “see” the outcome of an attempted attack.
+        \par Operating system audit trails and system logs are the most common information sources used by host-based IDSs. Operating system audit trails are typically generated at the operating system's deepest (kernel) level, and are thus more thorough and secure than system logs. System logs, on the other hand, are significantly less convoluted and smaller than audit trails, and are also far easier to interpret. Some host-based IDSs are built to enable a centralized IDS management and reporting infrastructure, allowing several hosts to be tracked from a single management panel. Others create communications in formats that network management systems can understand.
+        
+         \begin{itemize}
+            \item \textbf{Advantage}
+            \begin{itemize}
+                \item[*] With the capacity to monitor events local to a host, host-based IDSs can detect assaults that a network-based IDS would miss.
+                \item[*] When host-based information sources are generated before data is encrypted and/or after data is decrypted at the destination host, host-based IDSs can often operate in an environment where network traffic is encrypted. 
+                \item[*] Host-based IDSs are unaffected by switched networks.
+                \item[*] When operating on OS audit trails, host-based IDSs can assist in the detection of Trojan Horse or other attacks involving software integrity breaches.  Inconsistencies in process execution emerge as a result of this.
+            \end{itemize}
+        \item \textbf{Disadvantage}
+        \begin{itemize}
+            \item[*] Host-based IDSs are more difficult to administer because information must be configured and managed for each host under surveillance.
+            \item[*] Because the information sources (and occasionally parts of the analysis engines) for host-based IDSs are located on the host targeted by assaults, the IDS may be attacked and disabled as part of the attack.
+            \item[*] Because the IDS only observes the network packets received by its host, host-based IDSs are not well suited for detecting network scans or other types of surveillance that target a whole network.
+            \item[*] Certain denial-of-service attacks can disable host-based IDSs. When host-based IDSs use operating system audit trails as a data source, the volume of data generated might be enormous, necessitating more system storage.
+            \item[*] Host-based IDSs consume the processing resources of the hosts they monitor, putting a strain on the monitored systems' performance.
+        \end{itemize}
+        \end{itemize}
+    \clearpage
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics{diffrence.png}
+        \caption{Comparison of Network-Based and Host-based IDSs}
+    \end{figure}
+    
+    \item \textbf{Application-Based IDSs}
+    \par Application-based IDSs are a subclass of host-based IDSs that look at what happens inside a software application. The application's transaction log files are the most typical information sources used by application-based IDSs. Application-based IDSs can detect suspicious behavior owing to authorized users exceeding their authorization due to their ability to directly interface with the application and extensive domain or application-specific information incorporated in the analysis engine. This is because such issues are more likely to occur when the user interacts with the data and the program.
+    \begin{itemize}
+            \item \textbf{Advantage}
+            \begin{itemize}
+                \item[*] Application-based IDSs can track how users interact with applications, allowing them to track down unlawful behavior to specific users.
+                \item[*] Because they communicate with the application at transaction endpoints, where information is exposed to users in an unencrypted form, application-based IDSs can typically work in encrypted contexts. 
+            \end{itemize}
+            \clearpage
+        \item \textbf{Disadvantage}
+        \begin{itemize}
+            \item[*] Because application logs are not as well-protected as the operating system audit trails utilized by host-based IDSs, application-based IDSs may be more vulnerable to attacks than host-based IDSs.
+            \item[*] Because application-based IDSs often monitor events at the user level of abstraction, they are generally unable to identify Trojan Horse or other forms of software tampering. As a result, using an application-based IDS in conjunction with Host-based and/or Network-based IDSs is recommended.
+        \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+    
+    \subsubsection{IDS Analysis}
+    \par \textbf{Misuse detection and anomaly detection} are the two main ways to examining events to detect assaults. Most commercial systems employ the approach of misuse detection. The analysis looks for aberrant patterns of activity, which has sparked a lot of interest and continues to do so. Anomaly detection is employed by a few IDSs in a restricted way. Each methodology has advantages and disadvantages, and it appears that the most effective IDSs rely primarily on misuse detection approaches with a smattering of anomaly detection components.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics{fig 4.png}
+        \caption{Intrusion Detection Techniques}
+    \end{figure}
+
+    \clearpage
+    \begin{enumerate}
+        \item \textbf{Misuse Detection}
+        \par Misuse detectors examine system activity for occurrences or groups of events that match a specified pattern of events that characterizes a recognized attack. Misuse detection is commonly called "signature-based detection" since the patterns that correspond to known assaults are called signatures. Each sequence of events relating to an assault is specified as a different signature in the most popular misuse detection used in commercial products. There are, however, more advanced approaches to detecting misuse (known as "state-based" analysis techniques) that can employ a single signature to see groups of attacks.
+        
+        \begin{figure}[h]
+        \centering
+        \includegraphics{blockdofmisuse.png}
+        \caption{Block Diagram of Misuse Detection}
+    \end{figure}
+    
+        \begin{itemize}
+            \item \textbf{Advantage}
+            \begin{itemize}
+                \item[*] Misuse detectors are extremely effective in detecting attacks while producing a low number of false alarms.
+                \item[*] Misuse detectors can detect the use of a specific attack tool or technique fast and accurately. This will aid security managers in prioritizing corrective actions. 
+                \item[*] System managers, regardless of their level of security experience, can employ misuse detectors to track security issues on their systems and initiate incident handling procedures.
+            \end{itemize}
+        \item \textbf{Disadvantage}
+        \begin{itemize}
+            \item[*] Misuse detectors can only identify attacks that they are aware of, therefore they must be regularly updated with new attack signatures.
+            \item[*] Many misuse detectors are built with precisely specified signatures to avoid discovering variations of typical assaults. State-based abuse detectors can circumvent this problem, but they are not widely employed in commercial intrusion detection systems. 
+        \end{itemize}
+        \end{itemize}
+        \clearpage
+        \item \textbf{Anomaly Detection}
+        \par On a host or network, anomaly detectors detect abnormal or unexpected behavior (anomalies). They work on the notion that assaults are distinct from "normal" (legal) activities and, as a result, may be detected by systems that recognize these distinctions. Anomaly detectors create profiles that represent normal user, host, or network connection behavior. These profiles are created using past data gathered during typical operations. After that, the detectors collect event data and employ a number of metrics to determine when observed behavior deviates from the norm.
+        
+        \begin{figure}[h]
+        \centering
+        \includegraphics{blockdofanomaly.png}
+        \caption{Block Diagram of Anomaly Detection}
+    \end{figure}
+
+        \par The measures and techniques used in anomaly detection include:
+        \begin{itemize}
+            \item Threshold detection is a method of expressing various aspects of user and system behavior in terms of counts, with an acceptable level set. The number of files accessed by a user in a certain period of time, the number of failed attempts to login to the system, the amount of CPU used by a process, and so on are examples of behavior attributes. This level can be static or heuristic (i.e., designed to alter over time in response to real data).
+            \item Statistical measurements, both parametric (where the profiled attributes' distribution is assumed to fit a specific pattern) and non-parametric (where the profiled attributes' distribution is "learned" from a set of historical values recorded over time).
+            \item Rule-based measures are similar to non-parametric statistical measures in that they use observed data to determine acceptable usage patterns, but they vary in that the patterns are defined as rules rather than numerical values.
+            \item Neural networks, genetic algorithms, and immune system models are among the other options.
+            
+        \end{itemize}
+    
+        \par In today's commercial IDSs, only the first two measures are used.
+        \par Unfortunately, because regular patterns of user and system activity can vary significantly, anomaly detectors and IDSs based on them frequently generate a substantial number of false alarms. Despite this flaw, researchers claim that anomaly-based IDSs, unlike signature-based IDSs that rely on matching patterns of previous attacks, can detect new attack forms. Furthermore, several types of anomaly detection generate data that can be used by misuse detectors as information sources. A threshold-based anomaly detector, for example, can generate a figure representing the "normal" number of files accessed by a particular user, which the misuse detector can use as part of a detection signature that says "if the number of files accessed by this user exceeds this "normal" figure by ten percent, trigger an alarm." Although some commercial IDSs have rudimentary anomaly detection capabilities, few, if any, rely primarily on this technology. Anomaly detection in commercial systems is typically focused on detecting network or port scanning. Anomaly detection, on the other hand, is still a hot topic in intrusion detection research, and it may play a bigger role in future IDSs.
+        
+    
+        \begin{itemize}
+            \item \textbf{Advantage}
+            \begin{itemize}
+                \item[*] Anomaly detection-based IDSs detect unexpected behavior and, as a result, can detect symptoms of assaults without knowing precise specifics.
+                \item[*] Anomaly detectors can generate data that can be utilized to create signatures for misuse detection systems.
+            \end{itemize}
+        \item \textbf{Disadvantage}
+        \begin{itemize}
+            \item[*] Due to the unpredictable behaviors of users and networks, anomaly detection systems typically generate a substantial number of false alarms.
+            \item[*] In order to identify normal behavior patterns, anomaly detection algorithms frequently require large "training sets" of system event recordings. 
+        \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+
+    \subsection{Advice on selecting IDS products}
+    \par The large selection of intrusion detection products on the market today caters to a variety of organizational security aims and concerns. Given the wide selection of products and features available, deciding which items are the greatest fit for your company's needs can be challenging. When drafting a specification for procuring an intrusion detection product, consider the following questions.
+    
+    \subsubsection{Technical and policy considerations}
+    \par To identify which IDSs can be employed in your area, you must first analyze the technological, physical, and political aspects of that setting.
+    \clearpage
+    \begin{enumerate}
+        \item \textbf{What is the state of your system?}
+        \par The first challenge an IDS must overcome is integrating into your system's environment. This is critical because if an IDS isn't built to handle the information sources accessible on your systems, it won't be able to see anything that happens in your systems, whether it's an attack or routine activity.
+        \item \textbf{What are the technical requirements for your system environment?}
+        \par To begin, list the technical characteristics of your system's surroundings. Network diagrams and maps specifying the number and locations of hosts, operating systems for each host, the number and types of network devices such as routers, bridges, and switches, the number and types of terminal servers and dialup connections, and descriptors of any network servers, including types, configurations, and application software and versions running on each, are examples of information specified here. If you use an enterprise network management system, let us know about it.
+        
+        \item \textbf{What are the technical details of your present security measures?}
+        \par After you've outlined the technical aspects of your system's environment, go over the security safeguards you've previously implemented. Numbers, types, and locations of network firewalls, identification and authentication servers, data and link encryptors, anti-virus packages, access control products, specialized security hardware (such as crypto accelerator hardware for web servers), virtual private networks, and any other security mechanisms on your systems should be specified.
+        
+        \item \textbf{What are your company's objectives?}
+        \par Some IDSs were created to meet the unique requirements of specific businesses or market segments, such as e-commerce, health care, or financial markets. Define the functional goals of your business (a single company can have multiple goals) that are supported by your systems.
+        
+        \item \textbf{In your company, how formal is the system environment and managerial culture?}
+        \par Organizational styles differ depending on the organization's function and traditional culture. For example, when compared to university or other academic institutions, military or other organizations that deal with national security matters tend to operate with a high degree of formality. Some IDSs have features that aid in the enforcement of formal use regulations, such as setup screens that accept formal policy expressions and detailed reporting capabilities for policy violations.
+        
+    \end{enumerate}
+    
+    \subsubsection{What are your security objectives and goals?}
+    \par It's time to express the goals and objectives you want to achieve by deploying an IDS after you've specified the technological landscape of your organization's systems as well as the existing security methods.
+    
+    \begin{enumerate}
+        \item \textbf{Is your organization's main priority defending against threats that originate outside of it?}
+        \par Organizing your organization's threat concerns into categories is perhaps the simplest approach to outline security goals. First, express as clearly as feasible your company's worries about threats that originate from outside the organization.
+        
+        \item \textbf{Is your company concerned about an insider attack?}
+        \par Repeat the previous step, this time addressing concerns about threats that originate within your organization, including not only the user who attacks the system from within (for example, a shipping clerk attempting to access and alter the payroll system), but also the authorized user who oversteps their privileges, thereby violating organizational security policy or laws (for example, customer service agents who, out of curiosity, access earnings and payroll records for public disclosure).
+        
+        \item \textbf{Do you wish to utilize the results of your IDS to identify new needs for your company?}
+        \par System utilization monitoring is a generic system management tool that can be used to assess when system assets need to be upgraded or replaced. When an IDS monitors such activity, the necessity for an upgrade can appear as unusual levels of user activity.
+        
+        \item \textbf{Do you wish to utilize the IDS to keep administrative control over network usage that isn't security-related?}
+        \par There are systems use regulations in some businesses that target user activities that could be regarded as human management rather than system security issues. Accessing web sites with questionable taste or value (such as pornography) or using organizational systems to send email or other messages with the intent of harassing persons are examples. Some intrusion detection systems (IDSs) have functionality that can identify such management control violations.
+    \end{enumerate}
+    \clearpage
+    \subsubsection{What security policies do you currently have in place?}
+    \par You should check your current organization's security policy at this time. This will be used to configure the functionality of your IDS using this template. As a result, you may need to supplement the policy, or you may be able to infer the following elements from it.
+    
+    \begin{enumerate}
+        \item \textbf{How is it structured?}
+        \par It's helpful to express the security policy's aims in terms of both typical security goals (integrity, confidentiality, and availability) and more generic management goals (privacy, liability protection, and manageability).
+        
+        \item \textbf{What are the job titles of your system's users in general?}
+        \par List the general job functions of system users (a single user may have multiple functions), as well as the data and network connections that each function necessitates.
+        
+        \item \textbf{Have you established procedures for dealing with specific policy infractions in your company?}
+        \par When the IDS identifies a policy violation, it's helpful to have a clear notion of what the business wants to do. It may not be necessary to design the IDS to identify such infractions if the company does not intend to respond to them. If the organization, on the other hand, desires to actively respond to such infractions, the IDS operating staff should be notified of the company's response policy so that alarms can be handled appropriately.
+    \end{enumerate}
+    
+    \subsubsection{Organizational Requirements and Constraints}
+    \par The selection of IDSs and other security tools and technologies to defend your systems will be influenced by your organization's operational goals, limits, and culture. Consider these organizational requirements and constraints in this section.
+    \par Is your organization subject to another organization's oversight or review? If so, does that supervisory authority necessitate the use of intrusion detection systems (IDSs) or other system security resources? Are there any regulations or statutes that compel the public to have access to information on your system during specific hours of the day, or at specific dates or times? Are there any legal requirements for the safety of personal information maintained on your systems (such as earnings information or medical records)? Is there a legal necessity for investigating security breaches that reveal or jeopardize that information? Do any of these audit requirements state that the IDS must deliver or support certain functions? If so, what are the accreditation authority's requirements for intrusion detection systems (IDS) or other security measures? Do these include any IDS functions, particularly those related to the collecting and preservation of IDS logs as evidence?
+    \begin{itemize}
+        \item \textbf{What are the resource constraints in your company?}
+        \par IDSs can defend an organization's systems, but at a cost. It's pointless to spend more money on IDS features if your company doesn't have the systems or staff to take use of them. Remember that purchasing IDS software is only part of the total cost of ownership; you may also need to purchase a system to run the program on, as well as specialist support in installing and configuring the system and educating your employees. Some IDSs are built with the premise that system workers will monitor them 24 hours a day, seven days a week. If you don't expect to have such employees on hand, you might want to look into systems that allow for less than full-time attendance or systems that are built for unattended operation. It's vital that you and your company have a plan in place for dealing with the issues that an IDS uncovers. If you don't have the authority to manage the events that develop as a result of the monitoring, you should coordinate your IDS selection and configuration with the party who does.
+        
+    \end{itemize}
+    
+    \subsubsection{IDS product Features and Quality}
+    \par Check that is your product sufficiently scalable for your surroundings as many IDS are not able to scale to large distributed network environments. It is insufficient to claim that an IDS has specific capabilities without demonstrating that such capabilities are actual. You should request more evidence of a certain IDS's fit for your environment and aims. Test product against functional requirements and attacks. Also, IDS manufacturers cater to customers with varying levels of technical and security knowledge. Inquire about the vendor's assumptions about the users of their products. The capacity to adapt to your demands over time is one product design aim that will increase its value to your business over time.
+    
+    \begin{enumerate}
+        \item \textbf{What is the product's customer service policy?}
+        \par IDSs, like other systems, require ongoing maintenance and support. These requirements are detailed in this section.
+        
+        \item \textbf{What are your product installation and configuration support commitments?}
+        \par Many vendors offer expert support to customers in installing and configuring IDSs; others assume that these tasks will be handled by your own employees and just provide phone or email help desk services. What are commitments for ongoing product support? In this case, inquire about the vendor's commitment to supporting your IDS use.
+        
+        \item \textbf{What kind of training materials does the seller include with the product?}
+        \par Your people must still operate an IDS once it has been selected, installed, and configured. These individuals should be instructed on how to use the IDS to its full potential. Some vendors include product training as part of the bundle. What extra training resources does the vendor offer, and how much does it cost? If the IDS vendor does not include training as part of the IDS package, you should set aside funds to teach your operational staff.
+    \end{enumerate}
+    
+    \subsection{Strengths and Limitations of IDSs.}
+    \par Although intrusion detection systems are an important part of a company's security infrastructure, there are several things they don't accomplish well. It's critical to understand what IDSs should be trusted to do and what goals might be better served by other types of security mechanisms when you build the security strategy for your organization's systems.
+    
+    \subsubsection{Strengths of Intrusion Detection Systems}
+    \begin{itemize}
+        \item System events and user activity are monitored and analyzed.
+        \item System configurations are put through their paces to see how secure they are.
+        \item After establishing a baseline for a system's security, it's important to keep track of any changes to that baseline.
+        \item Recognizing system event patterns that correspond to known attacks.
+        \item Recognizing activity patterns that statistically differ from typical activity.
+        \item Managing the data generated by operating system audit and logging processes.
+        \item When attacks are detected, appropriate staff is notified via suitable ways.
+        \item Measuring the security policies contained in the analysis engine's enforcement.
+        \item Default security policies for information.
+        \item Allowing non-security experts to carry out critical security monitoring tasks.
+    \end{itemize}
+    
+    \subsubsection{Limitations of Intrusion Detection Systems} 
+    \begin{itemize}
+        \item Compensating for the protection infrastructure's inadequate or missing security procedures. Firewalls, identity and authentication, link encryption, access control measures, and virus detection and eradication are examples of such mechanisms.
+        \item When there is a heavy network or processing demand, identifying, reporting, and responding to an attack in real time.
+        \item Detecting freshly published or versions of previously published attacks.
+        \item Responding to sophisticated attackers' strikes in a timely and effective manner.
+        \item Without the need for human participation, automatically investigate attacks.
+        \item Defending themselves against attacks aimed at defeating or circumventing them.
+        \item Compensating for concerns with information source fidelity.
+        \item Dealing with switched networks in an efficient manner.
+    \end{itemize}
+    
+    \subsection{Advice on dealing with IDS output}
+    \subsubsection{Typical IDS output}
+    \par Almost all IDSs will generate a brief summary line for each attack that is detected. The information fields mentioned below are usually included in this summary line.
+    
+    \begin{itemize}
+        \item time/date,
+        \item sensor IP address,
+        \item vendor specific attack name,
+        \item standard attack name (if one exists),
+        \item source and destination IP addresses,
+        \item source and destination port numbers,
+        \item network protocol used by attack.
+    \end{itemize}
+    
+    \par Many IDSs will additionally give a broad description of each attack type. This description is critical since it allows the operator to accurately assess the attack's impact.
+    \par The following information is frequently included in this description:
+    
+    \begin{itemize}
+        \item written description of the attack,
+        \item severity degree of the assault,
+        \item type of loss incurred as a result of the attack,
+        \item type of vulnerability exploited by the attack,
+        \item list of software kinds and version numbers that are vulnerable to the attack,
+        \item patch information so that systems can be made invulnerable to the assault, and
+        \item references to public advisories regarding the attack or the vulnerability it exploits.
+    \end{itemize}
+    
+    \subsubsection{Handling Attacks}
+    \par \textbf{"Be Prepared"} is maybe the best advise anyone can give when it comes to successfully handling IDS outputs signaling the detection of an attack. Your company should have Incident Handling Plans and Protocols in place, which outline the company's procedures for dealing with security occurrences such as infections, insider system abuse, and assaults. At a minimum, this Incident Handling Plan and Procedure should assign roles and duties to all stakeholders within the business, specify the steps to be performed when an incident happens, and create training dates and content for everyone involved in the incident handling process. Additionally, you should plan for periodic procedures testing (akin to fire drills) in which all organizational parties go over their respective tasks and assignments. Spend time training your IDS operators on the company's Incident Handling Procedure. Consider revisiting the Procedure, modifying it to reflect the role of the IDS, if it predates the inclusion of the IDS to your security system. In particular, match the procedure's actions to the messages delivered by the IDS.
+    \cleardoublepage
+    \begin{center}
+        \huge{\section{The Future of IDSs and Conclusion}\label{sec:intro}}
+    \end{center}
+    
+    \subsection{The Future of IDSs}
+    \par Although the system audit function, which embodies the original idea of IDSs, has been a formal discipline for nearly fifty years, the IDS research field is still in its infancy, with the majority of studies dating from the 1980s and 1990s. Furthermore, it was not until the mid-1990s that IDSs became widely used commercially.
+    \par The Intrusion Detection and Vulnerability Assessment market, on the other hand, has developed into a substantial commercial presence. Analysts estimate that demand for IDS and other network security products and services will continue to expand in the near future.
+    \par Commercial IDSs are still in their nascent years, even as the IDS research field matures. Due to their significant number of false alarms, confusing control and reporting interfaces, overwhelming numbers of attack reports, lack of scalability, and lack of connection with enterprise network management systems, certain commercial IDSs have garnered poor press. The increasing business demand for IDSs, on the other hand, will make it more likely that these issues will be solved in the near future.
+    \par We believe that the quality of performance of IDS products will increase over time in the same way that anti-virus software does. Many common user behaviors triggered false alarms in early anti-virus software, and it failed to detect all known viruses. Anti-virus software, on the other hand, has improved over the last decade to the point that it is transparent to users while yet being quite powerful.
+    \par In addition, certain IDS capabilities are extremely likely to become basic capabilities of network infrastructure (such as routers, bridges, and switches) and operating systems. In this circumstance, the IDS product market will be able to better concentrate its efforts on fixing some of the most important concerns related to IDS product scalability and manageability.
+    \par Other computing developments, such as the migration to appliance-based IDSs, we believe, will have an impact on the design and function of IDS solutions. In order to enhance bandwidth, certain IDS pattern-matching functions are likely to be moved to hardware.
+    \par Finally, as insurance and other traditional commercial risk management methods make their way into the network security arena, IDS requirements for investigative support and functionality will grow.
+    
+    \subsection{Summary}
+    \par Intrusion detection is the process of monitoring and analyzing events in a computer system or network for indicators of intrusions, which are defined as attempts to undermine a computer's confidentiality, integrity, or availability. Information sources, analysis, and response are the three functional components of intrusion detection systems. When intrusions are identified, the system gathers event data from one or more information sources, performs a pre-configured analysis of the data, and then creates predetermined responses, ranging from reports to active intervention. Each security feature is designed to counteract a specific security threat to your system.
+    \par Furthermore, each security measure has both strong and weak parts. You can only protect yourself from a realistic variety of security attacks by combining them (this combination is frequently referred to as security in depth).
+    \par Firewalls act as barriers, denying access to some types of network traffic while allowing access to others based on a firewall policy. IDSs work as monitoring systems, keeping an eye on actions and determining whether or not they are suspicious. They can detect attackers who are able to get over firewalls and alert them to system administrators, who can take actions to mitigate the harm. 
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.80]{fig 5.png}
+        \caption{Summary of Intrusion Detection Systems}
+    \end{figure}
+    
+    \par Given your business's limits, the ideal IDS for your organization is the one that best satisfies your security goals and objectives. The following are common examples of governing factors:
+    \begin{itemize}
+        \item Security environment, in terms of policy, current security measures, and limits.
+        \item System environment, in terms of hardware and software architectures.
+        \item Organizational goals, in terms of the enterprise's functional goals (for example, e-commerce companies may have different goals and restrictions than manufacturing companies).
+        \item Acquisition, staffing, and infrastructure resources are all limited.
+    \end{itemize}
+    
+    \subsection{Conclusion}
+    \par IDSs are here to stay, with multibillion-dollar corporations funding the development of commercial security systems and generating annual sales of hundreds of millions of dollars. However, they remain complex to set up and run, and they are frequently ineffective when utilized by the most inexperienced security staff. Many amateurs are tasked to deal with the IDSs that defend our nation's computer systems and networks due to a statewide shortage of skilled security experts. I believe that by offering relevant knowledge and recommendations on the themes, this report helps to familiarize beginners with the world of intrusion detection systems and computer threats. The material presented in this paper is by no means complete, and I urge that anyone interested in configuring and deploying an intrusion detection system read more and get proper training before doing so.
+    
+    \clearpage
+    
+    \cleardoublepage
+    
+   
+    \addcontentsline{toc}{section}{References}
+    \begin{left}
+    \huge{\section*{References}\label{sec:intro}}
+    \end{left}
+    
+    \begin{enumerate}
+        \item[1.] T D Garvey and Teresa F Lunt. \textit{Model based intrusion detection.} In Proceedings of the 14th National Computer Security Conference, pages 372-385, October 1991.
+        \item[2.] Sandeep Kumar. \textit{Classification and Detection of Computer Intrusions.} Ph.D. Dissertation, August 1995.
+        \item[3.] Teresa F Lunt. \textit{Detecting Intruders in Computer Systems.} Conference on Auditing and Computer Technology, 1993.
+        \item[4.] Teresa F Lunt. \textit{A survey of intrusion detection techniques.} In Computers and Security, 12(1993), pages 405-418.
+        \item[5.] Steven E Smaha. Haystack: \textit{An Intrusion Detection System.} In Fourth Aerospace Computer Security Applications Conference, pages 37-44, Tracor Applied Science Inc., Austin, Texas,December 1988.
+        \item[6.] Bace, Rebecca G., \textit{Intrusion Detection,} Macmillan Technical Publishing, 2000.
+        \item[7.] Amoroso, Edward G., \textit{Intrusion Detection: An Introduction to Internet Surveillance, Correlation, Trace Back, Traps, and Response, Intrusion.net}, 1999
+        \item[8.] Erez, Noam, and Avishai Wool. \textit{"Control variable classification, modeling and anomaly detection in Modbus/TCP SCADA systems."} International Journal of Critical Infrastructure Protection 10 (2015)
+        \item[9.] Rein Turn and Willis H. Ware, \textit{Privacy and security issues in information systems}, July 2008.
+        \item[10.] K. Scarfone, P. Mell, Special Publication 800-94: \textit{Guide to Intrusion Detection and Prevention Systems (IDPS),} National Institute of Standards and Technology (NIST) (2007)
+        \item[11.] Scarfone, K., & Mell, P. (2007). \textit{Guide to Intrusion detection and prevention system (IDPS).} Retrieved from http://csrc.nist.gov/publications/nistpubs/800-94/sp 800-94.pdf
+        \item[12.] Shabtai, A., Fledel, Y., Kanonov, V., Elovici, Y., Dolev, S., & Glezer, C. (2010).\textit{ Google Android: A comprehensive security assessment.} IEEE Security and Privacy, 8, 35–44. doi:10.1109/MSP.2010.2
+        \item[13.] Rebecca bace and Peter Mell, \textit{Intrusion detection systems}
+        \item[14.] Aurobino Sundaram, \textit{An Intrusion detection systems}
+        \item[15.] "Intrusion detection systems - Javapoint"
+        \item[16.] "Intrusion detection systems - geekofgeeks"
+        \item[17.] "privacy and its goals - researchgate.net"
+        
+    \end{enumerate}
+  \clearpage
+   \addcontentsline{toc}{section}{Acknowledgement}
+    \begin{center}
+        \huge{\section*{Acknowledgement}\label{sec:intro}}
+    \end{center}
+    I would like to express my deep gratitude and indebtedness to my project guide, Dr Sankita J. Patel, Associate Professor, Computer Engineering Department, SVNIT Surat for her valuable
+    guidance, useful feedback and co-operation with kind and encouraging attitude for the successful completion of this work. I would also like to thank Dr Mukesh A. Zaveri, Head of
+    Department, and my seminar coordinator Dr. U. P. Rao, Computer Engineering Department. I am also thankful to SVNIT Surat and its
+    staff for providing this opportunity which helped me gain sufficient knowledge to make my work successful.
+    
+     
+    
+    \cleardoublepage
+    
+    \addcontentsline{toc}{section}{Acknowledgement}
+    \cleardoublepage
+    \clearpage
+\end{document}
