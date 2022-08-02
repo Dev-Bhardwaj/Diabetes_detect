@@ -1,8 +1,0 @@
-class problem
-class login 
-class diabetes
-class adminstration
-class patient
-class bill
-class discuss
-class finalreport
